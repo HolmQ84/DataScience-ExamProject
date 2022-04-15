@@ -3,7 +3,7 @@
 ***
 ## Description of the project is as follows
 ***
-### *Stage 1*
+### <u>Stage 1</u>
 
 *Objective: Foundation of a business case*
 
@@ -38,4 +38,4 @@
 
 ***
 
-### *Stage 2*
+### <u>Stage 2</u>
