@@ -27,10 +27,10 @@
 
 7. Create and upload a .md file as an initial release of the project, which contains title and brief annotation of your project, in minimum four sentences, telling:
 
-    - What is in the focus of your interest?
-    - Why is it interesting?
-    - Which outcome do you expect from your research?
-    - Who may be a user of the results?
+- What is in the focus of your interest?
+- Why is it interesting?
+- Which outcome do you expect from your research?
+- Who may be a user of the results?
 
 *Submit the Github repository link in Peergrade.*
 
