@@ -41,49 +41,65 @@ https://www.azlyrics.com/lyrics/ <span style="color: green">Artist</span> / <spa
 ### Formulate the following
 
 **Context**\
-As an upcoming artist it can be difficult to determine which factors that has the biggest impact on a songs chance to become a hit song.\
-We speculate that factors like the following, play a big role in how well a song is received and how likely it is to succeed.
+As an upcoming artist it can be difficult to determine which features that has the biggest impact on a songs chance to become a hit song.\
+We speculate that features like the following, play a big role in how well a song is received and how likely it is to succeed.
 
 
-*These factors include, but is not limited to:* 
-  - Melody – the tune of the music.
-  - Harmony – the individual chords as well as the overall chord progression.
-  - Rhythm – the beat and groove of the song.
-  - Form / Song structure – the different sections in the song.
-  - Texture – the number of layers of music going on.
-  - Tempo – the bpm.
+*These features include, but is not limited to:* 
+  - Danceability.
+  - Energy.
+  - Key.
+  - Loudness.
+  - Mode.
+  - Speechiness.
+  - Acousticness.
+  - Instrumentalness.
+  - Liveness.
+  - Valence.
+  - Tempo.
   - Lyrics.
   
 
-**Purpose**\
-The purpose of this project is to provide a tool, for music producers, that can help determine a set of music factors and the relationship between these factors, based on an analytic and scientific approach.
 
-To accomplish this goal, we seek to write a program that analyses the musical factors of the top/most successful songs and based on this data, analyse an inputed songs musical factors to determin how likely it is to hit a spot among the top hitting songs.
+**Purpose**\
+The purpose of this project is to provide a tool, for music producers, that can help determine a set of music features and the relationship between these features, based on an analytic and scientific approach.
+
+To accomplish this goal, we seek to write a program that analyses the musical features of the top/most successful songs and based on this data, analyse an inputed songs musical features to determin how likely it is to hit a spot among the top hitting songs.
 
 
 **Hypotheses for a data science problem definition.**
 
-"I dont know"
+Is it possible to predict a songs chance of hitting the Top 200 chart on Spotify, based on Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo.
 
+**0Hypotheses**
+
+A songs features does not affect a songs ability to hit the top 200 globally.
 
 ***
 
 ### Futher more, answer 
 
 **What is in the focus of your interest?**
-- The focus/interest of this project is to provide a tool that may help musicians/songwriters to determine and tweak specific muscial factors about a song based on the current top hit songs.
-- The goal is to give an estimation, in percentage, about how likely a song is to hit a specific spot in the top x collections. 
+
+The focus/interest of this project is to provide a tool that may help musicians/songwriters to determine and tweak specific muscial features about a song based on the current top hit songs.
+
+The goal is to give an estimation, in percentage, about how likely a song is to hit a specific spot in the top x collections. 
 
 
 **Why is it interesting?**
-- Our interest in this project sparks from the curiosity to see if the top hitting songs follow a specific musical technical pattern - and if this knowledge can be used to estime a given songs succes.
-- If so can these data be used to create a hit song - or at least increase the chance of succes.
+
+Our interest in this project sparks from the curiosity to see if the top hitting songs follow a specific musical technical pattern - and if this knowledge can be used to estime a given songs succes.
+
+If so can these data be used to create a hit song - or at least increase the chance of succes.
 
 
 **Which outcome do you expect from your research?**
-  - From this research we expect to find a correlation between the different factors.
-  - We also expect to see a specific pattern in the factors of the top songs.
-  - Lastly we expect to see specific words in the lyrics and a pattern between topics discussed in these lyrics. 
+
+From this research we expect to find a correlation between the different features.
+
+We also expect to see a specific pattern in the features of the top songs.
+
+Lastly we expect to see specific words in the lyrics and a pattern between topics discussed in these lyrics. 
 
 
 **Who may be a user of the results?**
