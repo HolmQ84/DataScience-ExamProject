@@ -39,3 +39,6 @@
 ***
 
 ### <u>Stage 2</u>
+
+At this stage you collect and wrangle data that supports your ideas and hypotheses.
+
