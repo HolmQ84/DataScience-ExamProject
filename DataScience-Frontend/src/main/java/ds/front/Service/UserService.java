@@ -1,4 +1,8 @@
 package ds.front.Service;
 
-public class UserService {
+import ds.front.Model.User;
+
+public interface UserService {
+    User userLogin(int username, String password);
+    User getUserById(int id);
 }

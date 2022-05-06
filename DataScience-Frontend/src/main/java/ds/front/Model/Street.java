@@ -7,10 +7,8 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class User {
+public class Street {
     @Id
-    private int userId;
-    private String userName;
-    private String password;
-    private int personId;
+    private int streetId;
+    private String streetName;
 }

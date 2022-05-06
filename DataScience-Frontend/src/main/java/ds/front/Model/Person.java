@@ -4,13 +4,15 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Date;
 
 @Data
 @Entity
-public class User {
+public class Person {
     @Id
-    private int userId;
-    private String userName;
-    private String password;
     private int personId;
+    private String firstName;
+    private String lastName;
+    private Date birthdate;
+    private int addressId;
 }
