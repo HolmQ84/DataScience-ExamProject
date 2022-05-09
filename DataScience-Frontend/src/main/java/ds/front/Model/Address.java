@@ -14,6 +14,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
     private int addressId;
+    private String country;
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "street_id", referencedColumnName = "street_id")
     private Street street;
@@ -21,15 +22,14 @@ public class Address {
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "city_id", referencedColumnName = "city_id")
     private City city;
-    private String country;
 
     @Override
     public String toString() {
-        return "Address\n{" +
-                "addressId=" + addressId +
-                ", street=" + street +
-                ", streetNumber='" + streetNumber + '\'' +
-                ", city=" + city +
+        return "\nAddress{" +
+                "addressId=" + addressId + "," +
+                "street=" + street + "," +
+                "streetNumber=" + streetNumber + "," +
+                "city=" + city +
                 '}';
     }
 

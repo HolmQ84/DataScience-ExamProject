@@ -19,10 +19,10 @@ public class City {
 
     @Override
     public String toString() {
-        return "City\n{" +
-                "cityId=" + cityId +
-                ", cityName='" + cityName + '\'' +
-                ", postalCode=" + postalCode +
+        return "\nCity{" +
+                "cityId=" + cityId + "," +
+                "cityName=" + cityName + "," +
+                "postalCode=" + postalCode +
                 '}';
     }
 

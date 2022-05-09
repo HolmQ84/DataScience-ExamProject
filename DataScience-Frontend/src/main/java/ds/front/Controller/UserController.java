@@ -30,14 +30,11 @@ public class UserController {
     @GetMapping("/{userId}")
     public EntityModel<User> getUserById(@PathVariable int userId) throws Exception {
         EntityModel<User> current = userService.getUserById(userId);
-        WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllUsers());         // get link
-        current.add(linkTo.withRel("all-users"));										    // append the link
-
-        Link selfLink = linkTo(methodOn(this.getClass()).getUserById(userId)).withSelfRel();    //add also link to self
+        WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllUsers());             // Get link to all users.
+        current.add(linkTo.withRel("all-users"));										        // Append the link.
+        Link selfLink = linkTo(methodOn(this.getClass()).getUserById(userId)).withSelfRel();    // Add self link.
         current.add(selfLink);
-
         // TODO - Fix the person, address, city and street not being sent.
-
         return current;
     }
 

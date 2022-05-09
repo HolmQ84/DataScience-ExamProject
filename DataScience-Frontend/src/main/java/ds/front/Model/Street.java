@@ -18,9 +18,9 @@ public class Street {
 
     @Override
     public String toString() {
-        return "Street\n{" +
-                "streetId=" + streetId +
-                ", streetName='" + streetName + '\'' +
+        return "\nStreet{" +
+                "streetId=" + streetId + "," +
+                "streetName=" + streetName +
                 '}';
     }
 
