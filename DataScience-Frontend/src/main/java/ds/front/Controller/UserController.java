@@ -4,12 +4,16 @@ import ds.front.Model.User;
 import ds.front.Service.FakerUsers;
 import ds.front.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RequestMapping("/users")
 @RestController
@@ -24,9 +28,32 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable int userId) {
-        System.out.println("Running fetch user with id: " + userId);
-        return userService.getUserById(userId);
+    public EntityModel<User> getUserById(@PathVariable int userId) throws Exception {
+        EntityModel<User> current = userService.getUserById(userId);
+        WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getAllUsers());         // get link
+        current.add(linkTo.withRel("all-users"));										    // append the link
+
+        Link selfLink = linkTo(methodOn(this.getClass()).getUserById(userId)).withSelfRel();    //add also link to self
+        current.add(selfLink);
+
+        // TODO - Fix the person, address, city and street not being sent.
+
+        return current;
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return userService.createUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable int id) {
+        return userService.updateUser(user, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable int id) {
+        return userService.deleteUser(id);
     }
 
     @GetMapping("/test/createUser")
