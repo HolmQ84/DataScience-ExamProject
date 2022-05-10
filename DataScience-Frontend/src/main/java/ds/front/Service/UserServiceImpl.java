@@ -9,9 +9,11 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.awt.image.BandCombineOp;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -46,6 +48,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<User> createUser(User user) {
+
+        user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(10)));
         User savedUser = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
