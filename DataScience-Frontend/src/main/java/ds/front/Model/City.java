@@ -1,0 +1,37 @@
+package ds.front.Model;
+
+import lombok.Data;
+import lombok.ToString;
+
+import javax.persistence.*;
+
+@Data
+@ToString
+@Entity
+@Table(name="city")
+public class City {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "city_id")
+    private int cityId;
+    private String cityName;
+    private int postalCode;
+
+    @Override
+    public String toString() {
+        return "\nCity{" +
+                "cityId=" + cityId + "," +
+                "cityName=" + cityName + "," +
+                "postalCode=" + postalCode +
+                '}';
+    }
+
+    public City(String cityName, int postalCode) {
+        this.cityName = cityName;
+        this.postalCode = postalCode;
+    }
+
+    public City() {
+    }
+}
+
