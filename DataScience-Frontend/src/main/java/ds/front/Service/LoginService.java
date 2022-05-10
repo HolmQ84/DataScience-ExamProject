@@ -21,7 +21,7 @@ public class LoginService {
             List<User> allUsers = userRepository.findAll();
             for (User current : allUsers) {
                 if (current.getUsername().equals(loginUser.getUsername())) {
-                    if (loginUser.getPassword().equals(current.getPassword())) {
+                    if (BCrypt.checkpw(loginUser.getPassword(), current.getPassword())) {
                         return current;
                     }
                     return new User();

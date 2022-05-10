@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=music
+    username: test1234
+    password: test1234
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: music
+server:
+  port: 80

@@ -1,8 +1,19 @@
 body {
     text-align: center !important;
+    background-image: url("../img/background.jpg") !important;
 }
 
 h1,h2,h3 {
-    padding-top: 3%;
-    padding-bottom: 1%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    color: lightblue !important;
+}
+
+.nav-link {
+    color: lightblue !important;
+}
+
+.navbar-brand {
+    color: lightblue !important;
+    font-weight: bold;
 }
