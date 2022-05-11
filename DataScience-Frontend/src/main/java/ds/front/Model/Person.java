@@ -19,4 +19,15 @@ public class Person {
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
+
+    @Override
+    public String toString() {
+        return "\nPerson{" +
+                "personId=" + personId +
+                ", firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", birthdate=" + birthdate +
+                ", address=" + address +
+                '}';
+    }
 }
