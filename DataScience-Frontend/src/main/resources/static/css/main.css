@@ -1,6 +1,9 @@
 body {
     text-align: center !important;
     background-image: url("../img/background.jpg") !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: 100% auto !important;
 }
 
 h1,h2,h3 {

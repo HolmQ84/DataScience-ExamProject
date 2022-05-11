@@ -71,8 +71,8 @@ public class MusicService {
         }
     }
 
-    public void storeListOfMusicInMongoDB(List<Music> musicList) {
-        musicRepository.saveAll(musicList);
+    public int storeListOfMusicInMongoDB(List<Music> musicList) {
+        return musicRepository.saveAll(musicList).size();
     }
 
     public List<Music> getMusic() {

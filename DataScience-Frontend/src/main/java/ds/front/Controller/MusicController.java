@@ -16,8 +16,8 @@ public class MusicController {
 
     @GetMapping("/filldb")
     public String musicToDB() {
-        musicService.storeListOfMusicInMongoDB(musicService.convertCSVtoListOfMusic());
-        return "Music list successfully stored in MongoDB";
+        int value = musicService.storeListOfMusicInMongoDB(musicService.convertCSVtoListOfMusic());
+        return "Music list successfully stored in MongoDB. " + value + " song added.";
     }
 
     @GetMapping("/getMusic")
