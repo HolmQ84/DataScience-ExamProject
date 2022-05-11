@@ -3,8 +3,6 @@ package ds.front.Service;
 import ds.front.Model.User;
 import ds.front.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +27,7 @@ public class LoginService {
             }
             return new User();
         } catch (Exception exception) {
+            System.out.println(exception);
             return new User();
         }
     }

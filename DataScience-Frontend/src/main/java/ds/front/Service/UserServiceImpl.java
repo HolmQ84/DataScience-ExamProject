@@ -1,19 +1,14 @@
 package ds.front.Service;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import ds.front.Model.User;
 import ds.front.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.awt.image.BandCombineOp;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -25,13 +20,6 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public ResponseEntity<User> userLogin(int username, String password) {
-        userRepository.findAll();
-        // TODO - Finish this function.
-        return null;
-    }
-
-    @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
@@ -39,19 +27,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public EntityModel<User> getUserById(int id) throws Exception {
         Optional<User> user = userRepository.findById(id);
-        if (!user.isPresent())
-            throw new Exception("id: " + id);
+        if (user.isEmpty())
+            throw new Exception("Couldnt find user with ID: " + id);
 
-        EntityModel<User> resource = EntityModel.of(user.get()); 						    // get the resource
-        return resource;
+        return EntityModel.of(user.get());
     }
 
     @Override
     public ResponseEntity<User> createUser(User user) {
-
         user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(10)));
         User savedUser = userRepository.save(user);
-
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedUser.getUserId()).toUri();
         return ResponseEntity.created(location).build();
