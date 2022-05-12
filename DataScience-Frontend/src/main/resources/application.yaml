@@ -1,10 +1,18 @@
 spring:
+# Neo4J
   neo4j:
     uri: bolt://localhost:7687
     authentication:
       username: neo4j
       password: test123
 
+  cache:
+    type: redis
+    redis:
+      cache-null-values: true
+      time-to-live: 40000
+
+# JPA & Postgres
   jpa:
     properties:
       hibernate:
@@ -20,6 +28,7 @@ spring:
     init:
       mode: always
       continue-on-error: true
+# MongoDB
   data:
     mongodb:
       host: localhost
@@ -27,6 +36,9 @@ spring:
       database: music
     neo4j:
       database: neo4j
-server:
-  port: 8081
 
+  main:
+    allow-bean-definition-overriding: true
+# Server port
+server:
+  port: 80

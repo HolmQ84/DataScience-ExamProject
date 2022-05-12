@@ -3,7 +3,7 @@ body {
     background-image: url("../img/background.jpg") !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
-    background-size: 100% auto !important;
+    background-size: 100% 100% !important;
 }
 
 h1,h2,h3 {
