@@ -5,14 +5,18 @@ spring:
     authentication:
       username: neo4j
       password: test123
-
+# Redis
   cache:
     type: redis
     redis:
       cache-null-values: true
       time-to-live: 40000
-
-# JPA & Postgres
+# Postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=music
+    username: test1234
+    password: test1234
+# JPA & Hibernate
   jpa:
     properties:
       hibernate:
@@ -20,23 +24,20 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: true
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=music
-    username: test1234
-    password: test1234
-  sql:
-    init:
-      mode: always
-      continue-on-error: true
 # MongoDB
   data:
     mongodb:
       host: localhost
       port: 27017
       database: music
+# Neo4J
     neo4j:
       database: neo4j
-
+# Others
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
   main:
     allow-bean-definition-overriding: true
 # Server port
