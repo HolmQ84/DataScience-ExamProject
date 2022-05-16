@@ -3,11 +3,15 @@ package ds.front.Service;
 import ds.front.Model.User;
 import ds.front.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+
 
 import java.net.URI;
 import java.util.List;
@@ -20,17 +24,19 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
+    @Cacheable(value = "User")
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
-    public EntityModel<User> getUserById(int id) throws Exception {
+    @Cacheable(cacheNames = "users", key = "#id")
+    public Optional<User> getUserById(int id) throws Exception {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty())
             throw new Exception("Couldnt find user with ID: " + id);
 
-        return EntityModel.of(user.get());
+        return user;
     }
 
     @Override
@@ -43,16 +49,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<User> updateUser(User user, int id) {
+    @CachePut(value="User", key="#id")
+    public Optional<User> updateUser(User user, int id) {
         Optional<User> attendanceOptional = userRepository.findById(id);
         if (attendanceOptional.isEmpty())
-            return ResponseEntity.notFound().build();
+            return null;
         user.setUserId(id);
         userRepository.save(user);
-        return ResponseEntity.noContent().build();
+        return Optional.of(user);
     }
 
     @Override
+    @CacheEvict(value="User", key="#id")
+    // @CacheEvict(value="User", allEntries=true) //in case there are multiple entires to delete
     public String deleteUser(int id) {
         userRepository.deleteById(id);
         return "User successfully deleted.";
