@@ -4,11 +4,12 @@ import com.opencsv.bean.CsvBindByPosition;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Document(collection = "music")
-public class Music {
+public class Music implements Serializable {
     @CsvBindByPosition(position = 0)
     private int musicId;
     @CsvBindByPosition(position = 1)

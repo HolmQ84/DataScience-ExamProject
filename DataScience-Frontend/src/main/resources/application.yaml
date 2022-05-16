@@ -1,10 +1,18 @@
 spring:
-  neo4j:
-    uri: bolt://localhost:7687
-    authentication:
-      username: neo4j
-      password: test123
+# Neo4J
+#  neo4j:
+#    uri: bolt://localhost:7687
+#    authentication:
+#      username: neo4j
+#      password: test123
 
+
+# Postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=music
+    username: test1234
+    password: test1234
+# JPA & Hibernate
   jpa:
     properties:
       hibernate:
@@ -12,21 +20,31 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: true
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=music
-    username: test1234
-    password: test1234
-  sql:
-    init:
-      mode: always
-      continue-on-error: true
+# MongoDB
   data:
     mongodb:
       host: localhost
       port: 27017
       database: music
+# Redis
+  cache:
+    type: redis
+    #cache-names: users
+    redis:
+      time-to-live: 60000 #ms
+  redis:
+    host: localhost
+    port: 6379
+# Neo4J
     neo4j:
       database: neo4j
+# Others
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+  main:
+    allow-bean-definition-overriding: true
+# Server port
 server:
-  port: 8081
-
+  port: 80
