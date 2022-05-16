@@ -20,3 +20,9 @@ h1,h2,h3 {
     color: lightblue !important;
     font-weight: bold;
 }
+
+.navbar {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+}

@@ -1,9 +1,8 @@
 .float-container {
-    border: 3px solid #fff;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
-    height: 840px;
+    height: 800px;
 }
 
 .float-child-left {
@@ -19,7 +18,7 @@
 
 .float-child-right {
     background-color: lightblue !important;
-    height: 25%;
+    height: 40%;
     width: 45%;
     float: right;
     margin: 2.5%;
@@ -29,6 +28,6 @@
 }
 
 #box-1, #box-2, #box-3, #box-4 {
-    background-color: lightblue !important;
-    height: 300px !important;
+    background-color: white !important;
+    height: 480px !important;
 }
