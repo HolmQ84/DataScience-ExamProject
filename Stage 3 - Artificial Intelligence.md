@@ -59,14 +59,14 @@ in neural-network.
 Our model will consist of 10 features, nine of them are mentioned above, and the 10th feature is the length of the song.
 Then we will create one layer with 8 nodes and 4 outputs. We are using Rectified Linear Unit (ReLU) and "adam".\
 "Adam" is different to the classic stochastic gradient descent, because it allows the learning weight to be changes under the learning process.\
-\
+
 
 Through the process, we are using cross_val_score to find the best accuracy in the model, we ended on 78
 ![img_1.png](img_1.png)
 after trying with different numbers of batches and epocs, we experienced that 300 epocs and 200 in batch size was ideal.\
-\
 
-We also tried the model on our own dataset, and got some pretty good results.
+
+We also tried the model on our own dataset, and got some pretty good results.\
 ![img_2.png](img_2.png)
 ![img_3.png](img_3.png)
 ![img_4.png](img_4.png)
