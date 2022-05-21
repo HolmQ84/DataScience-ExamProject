@@ -43,7 +43,9 @@ First model is an attempt to predict the mood of a given song, based on the "fea
 - Tempo
 
 The mood of the song is set in four categories, Energetic, Happy, Calm and Sad, based on the following classifier:
+
 ![img.png](img.png)
+
 The idea of this comes from an article found on this page https://sites.tufts.edu/eeseniordesignhandbook/2015/music-mood-classification/
 
 in the notebook located here: https://github.com/HolmQ84/DataScience-ExamProject/blob/main/DataScience-SongManagement/JupyterNotebook/Data%20Modelling/Analysing%20songs%20to%20find%20the%20mood.ipynb
