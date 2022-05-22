@@ -126,3 +126,5 @@ Which shows that the optimal number is 49, with a range of 1-100 (The number of 
 Which gives us a more precise model.
 
 Even though 54% is a horrible score for a prediction model.
+
+- Save the model.
