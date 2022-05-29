@@ -5,14 +5,78 @@
 </head>
 
 <body>
-<h2>Make Prediction About a Cluster</h2>
-<br>
-<form method="POST" action="/predicted" id=pform>
-    <div>
-        Enter spotify url from specific song <input type="text" name="x1"> <br>
-        <input type="submit" name="submit" value="Submit">
+<div class="container">
+
+    <h2>Make Prediction About a songs popularity</h2>
+    <div class="row">
+        <div class="col-25">
+            <label>Input a spotify song url</label>
+        </div>
+        <form method="POST" action="/predicted" id=pform>
+            <div class="col-75">
+                <input type="text" name="x1"> <br>
+                <input type="submit" name="submit" value="Submit">
+            </div>
+        </form>
     </div>
-</form>
-</h2>
+</div>
+
+<div class="container">
+    <h2>Make Prediction about how many songs Ed Sheeran will create on a given year</h2>
+    <div class="row">
+        <div class="col-25">
+            <label>Input a Year</label>
+        </div>
+        <form method="POST" action="/predicted/regression" id=pform>
+            <div class="col-75">
+                <input type="text" name="x1"> <br>
+                <input type="submit" name="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #c9c2c2;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #1d8ad0;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+
+    .container {
+        border-radius: 5px;
+        background-color: #white;
+        padding: 20px;
+    }
+
+    /* Floating column for labels: 25% width */
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    /* Floating column for inputs: 75% width */
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+</style>
+
 </body>
 </html>

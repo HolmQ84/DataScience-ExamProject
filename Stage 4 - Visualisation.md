@@ -1,18 +1,48 @@
 Objective: Present the process and results of the analysis in human-understandable form.
 
-Extend your solution with a design of advanced visualisation of business data scenarios and results.
-
-1. Deploy the model on localhost web server.
+1. Create a simple webserver.
 
 
-2. Create simple interface for accessing and using the model
+3. Create simple interface for accessing and using the model
 
 
 3. Design alternative/complementing interface, which provides extended user experience.
    1. Consider applying animation, 3D visualisation, and VR/AR/MR (extended reality) techniques at least at a conceptual level
    2. If impossible to implement, draw your ideas on paper or digital surface and add the image to your project assets.
-   3. Elaborate on the benefits of applying the above-mentioned visualisation techniques for data analytics. 
+   3. Elaborate on the benefits of applying the above-mentioned visualisation techniques for data analytics.
 
+
+1 & 2. Extend your solution with a design of advanced visualisation of business data scenarios and results.
+
+### Extend your solution with a design of advanced visualisation of business data scenarios and results.
+
+We've decided to deploy our models on a localhost flask server. 
+\The server provides 3 endpoints:
+
+**"/predict"**
+
+/predict provides an interface for accessing a form page where you use the models.\
+The site uses to models "popularity_prediction_model.pkl" & "regressionPredictor.pkl".
+
+**popularity_prediction_model.pkl** proides a service that predicts whether is popular on un popular
+
+
+**regressionPredictor.pkl** makes an estimate about how many songs Ed Sheeran will provide in a given year.
+
+![img_10.png](img_10.png)
+
+**"/predicted"**
+
+"/predicted" serves the answer from popularity_prediction_model.pkl.
+
+![img_11.png](img_11.png)
+
+
+**"/predicted/regression"**
+
+"/predicted/regression" serves the answer from regressionPredictor.pkl.
+
+![img_12.png](img_12.png)
 ***
 
 
