@@ -12,54 +12,63 @@ import plotly
 import plotly.express as px
 from sklearn.decomposition import PCA
 
+#Spotify
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+
+spotify_client_id = "3a2f65eb20164b24b59b7fdd6876bb51"
+spotify_client_secret = "9f6d3a070cdf4eb8adda14a794d60469"
+
+#Genius credentials
+genius_token = "4SoLPv5UHyFZyAe5T-PhxS-bRCRrdNIgMNpeqjjIaWvnRbUmTpoGxd9knxBtlQyg"
+
+#Authentication spotify - without user
+client_credentials_manager = SpotifyClientCredentials(client_id="3a2f65eb20164b24b59b7fdd6876bb51", client_secret="9f6d3a070cdf4eb8adda14a794d60469")
+sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
+
+gaussian_model = joblib.load('../../5 - Communicate results/popularity_prediction_model.pkl')
+
 # Create An Instance (Of the application)
 app = Flask(__name__, template_folder='./templates')
 
-@app.route('/barchart')
-def barchart():
-   df = pd.DataFrame({
-      'Fruit': ['Apples', 'Oranges', 'Bananas', 'Apples', 'Oranges', 
-      'Bananas'],
-      'Amount': [4, 1, 2, 2, 4, 5],
-      'City': ['SF', 'SF', 'SF', 'Montreal', 'Montreal', 'Montreal']
-   })
-   fig = px.bar(df, x='Fruit', y='Amount', color='City', 
-      barmode='group')
-   graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-   return render_template('visual.html', graphJSON=graphJSON)
+def analyseSongPopularity(songUrl):
+    # Get song by songUrl.
+    features = sp.audio_features(songUrl)[0]
+    # Convert to dataframe.
+    df = pd.DataFrame(features, index=['i',])
+    # Get values and remove unwanted columns.
+    final_set = df.values[:,0:10]
+    # Predict popularity of song
+    return gaussian_model.predict(final_set)
 
-@app.route('/piechart')
-def piechart():
-   df = pd.DataFrame({
-      'Fruit': ['Apples', 'Oranges', 'Bananas', 'Melons', 'Cherries', 
-      'Pinapples'],
-      'Amount': [4, 1, 2, 2, 4, 5],
-   })
-   fig = px.pie(df, names='Fruit', values='Amount')
-   graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-   return render_template('visual.html', graphJSON=graphJSON)
+@app.route('/predict')
+def predict():
+    return render_template('prediction.html')
 
-@app.route('/scatterplot')
-def scatterplot():
-   df = pd.DataFrame({
-      'x': [0, 1, 2, 5, 7, 10, 12, 15, 19, 24],
-      'y': [4, 2, 7, 15, 11, 19, 3, 5, 9, 8]
-   })
-   fig = px.scatter(df, x='x', y='y')
-   graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-   return render_template('visual.html', graphJSON=graphJSON)
+@app.route('/tester/{url}')
+def predict_popularity():
+    return analyseSongPopularity(url);
 
-@app.route('/pcascatter')
-def pcascatter():
-    df = px.data.iris()
-    X = df[['sepal_length', 'sepal_width', 'petal_length', 'petal_width']]
+@app.route('/predictedtest')
+def predict2():
+    predicted = analyseSongPopularity('https://open.spotify.com/track/6OtCIsQZ64Vs1EbzztvAv4?si=2f482142d5ca42b5')
+          
+        # return render_template("predicted.html", content=X, prediction=predicted)
+    return str(predicted)
+    #return render_template("predicted.html")
 
-    pca = PCA(n_components=2)
-    components = pca.fit_transform(X)
-
-    fig = px.scatter(components, x=0, y=1, color=df['species'], labels={'0': 'X-Value', '1': 'Y-Value'})
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('visual.html', graphJSON=graphJSON)
+@app.route('/predicted', methods=['GET', 'POST'])
+def predicted():
+    if request.method == 'POST':
+        x1 = request.form['x1']
+        print(x1)
+        X = [[x1]]
+        
+        predicted = analyseSongPopularity('https://open.spotify.com/track/6OtCIsQZ64Vs1EbzztvAv4?si=2f482142d5ca42b5')
+          
+        # return render_template("predicted.html", content=X, prediction=predicted)
+        return render_template("predicted.html", content="X", prediction=predicted[0])
+    
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port= 5000, debug=True)
