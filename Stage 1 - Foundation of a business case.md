@@ -30,12 +30,12 @@ Besides these points the project can be analyzed from many angels and directions
 
 #### We have found different data sets which can be used to reach our goal to make predictions of a songs popularity:
 
-- Total list of Top 500's through the times since 2017 at Spotify.\
+- Total list of Top 200's through the times since 2017 at Spotify.\
 https://www.kaggle.com/datasets/dhruvildave/spotify-charts
 
 
 - Lyrics for each song\
-https://www.azlyrics.com/lyrics/ <span style="color: green">Artist</span> / <span style="color: orange">Song Title </span><span>.html</span>
+https://genius.com/ <span style="color: green">Artist</span> / <span style="color: orange">Song Title </span><span>.html</span>
 
 ***
 ### Formulate the following
